@@ -40,9 +40,9 @@ export default class MapMarkers extends React.Component<MapMarkersProps> {
               <p className="marker-title">
                 {mapMarker.title}
               </p>
-              <div className="marker-chip">
-                <div className="marker-chip-dot"></div>
-                <p className="marker-chip-label">{mapMarker.badgeLabel}</p>
+              <div className="marker-chip" style={{ backgroundColor: mapMarker.badgeBgColor }}>
+                <div className="marker-chip-dot" style={{ backgroundColor: mapMarker.badgeColor }}></div>
+                <p className="marker-chip-label" style={{ color: mapMarker.badgeColor }}>{mapMarker.badgeLabel}</p>
               </div>
             </div>
           </div>
