@@ -9,8 +9,8 @@ import React, { Component } from "react";
 import { LatLng, LeafletContext, Viewport } from "react-leaflet";
 import MapComponentView from "./MapComponent.view";
 import {
-  AnimationType,
-  INFINITE_ANIMATION_ITERATIONS,
+  // AnimationType,
+  // INFINITE_ANIMATION_ITERATIONS,
   MapEventMessage,
   MapLayer,
   MapMarker,
@@ -21,8 +21,8 @@ import {
 import "./styles/markerAnimations.css";
 import "./styles/markers.css";
 import mockMapLayers from "./testData/mockMapLayers";
-import mockMapMarkers from "./testData/mockMapMarkers";
-import mockMapShapes from "./testData/mockMapShapes";
+// import mockMapMarkers from "./testData/mockMapMarkers";
+// import mockMapShapes from "./testData/mockMapShapes";
 
 export const SHOW_DEBUG_INFORMATION = false;
 const ENABLE_BROWSER_TESTING = true;
@@ -152,20 +152,20 @@ export default class MapComponent extends Component<{}, State> {
     this.addDebugMessage("loading mock data");
     this.setState({
       mapLayers: mockMapLayers,
-      mapMarkers: mockMapMarkers,
-      mapShapes: mockMapShapes,
-      ownPositionMarker: {
-        id: "Own Position",
-        position: { lat: 36.56, lng: -76.17 },
-        icon: "❤️",
-        size: [32, 32],
-        animation: {
-          duration: 1,
-          delay: 0,
-          iterationCount: INFINITE_ANIMATION_ITERATIONS,
-          type: AnimationType.BOUNCE,
-        },
-      },
+      // mapMarkers: mockMapMarkers,
+      // mapShapes: mockMapShapes,
+      // ownPositionMarker: {
+      //   id: "Own Position",
+      //   position: { lat: 36.56, lng: -76.17 },
+      //   icon: "❤️",
+      //   size: [32, 32],
+      //   animation: {
+      //     duration: 1,
+      //     delay: 0,
+      //     iterationCount: INFINITE_ANIMATION_ITERATIONS,
+      //     type: AnimationType.BOUNCE,
+      //   },
+      // },
     });
   };
 
