@@ -1,4 +1,4 @@
-import L from "leaflet";
+import L, { LatLngLiteral } from "leaflet";
 import "leaflet/dist/images/layers-2x.png";
 import "leaflet/dist/images/layers.png";
 import "leaflet/dist/images/marker-icon-2x.png";
@@ -31,7 +31,7 @@ interface State {
   debugMessages: string[];
   isFromNative: boolean;
   isMobile: boolean;
-  mapCenterPosition: LatLng;
+  mapCenterPosition: LatLngLiteral;
   mapLayers: MapLayer[];
   mapMarkers: MapMarker[];
   mapShapes: MapShape[];
@@ -133,7 +133,19 @@ export default class MapComponent extends Component<{}, State> {
           event.data.mapCenterPosition.lng,
         ]);
       }
-      this.setState({ ...this.state, ...event.data });
+      console.log(event, 'event')
+      if (event.data.event === 'resetMapState') {
+        const { mapCenterPosition, zoom } = this.state
+        this.state.mapRef.leafletElement.flyTo([
+          mapCenterPosition.lat,
+          mapCenterPosition.lng,
+        ], zoom);
+      } else
+        this.setState({ ...this.state, ...event.data });
+      //  if( event.event === 'resetMapState'){
+      //    console.log('event' , )
+      //  } else { 
+      //  }
     } catch (error) {
       this.addDebugMessage({ error: JSON.stringify(error) });
     }
@@ -154,18 +166,18 @@ export default class MapComponent extends Component<{}, State> {
       mapLayers: mockMapLayers,
       // mapMarkers: mockMapMarkers,
       // mapShapes: mockMapShapes,
-      // ownPositionMarker: {
-      //   id: "Own Position",
-      //   position: { lat: 36.56, lng: -76.17 },
-      //   icon: "❤️",
-      //   size: [32, 32],
-      //   animation: {
-      //     duration: 1,
-      //     delay: 0,
-      //     iterationCount: INFINITE_ANIMATION_ITERATIONS,
-      //     type: AnimationType.BOUNCE,
-      //   },
-      // },
+      ownPositionMarker: {
+        id: "Own Position",
+        position: { lat: 36.56, lng: -76.17 },
+        icon: "❤️",
+        size: [32, 32],
+        // animation: {
+        //   duration: 1,
+        //   delay: 0,
+        //   iterationCount: INFINITE_ANIMATION_ITERATIONS,
+        //   type: AnimationType.BOUNCE,
+        // },
+      },
     });
   };
 
@@ -174,7 +186,7 @@ export default class MapComponent extends Component<{}, State> {
     payload?: WebviewLeafletMessagePayload
   ) => {
     if (!payload && this.state.mapRef?.leafletElement) {
-      debugger;
+      // debugger;
       const mapCenterPosition: LatLng = {
         lat: this.state.mapRef.leafletElement?.getCenter().lat,
         lng: this.state.mapRef.leafletElement?.getCenter().lng,
@@ -195,7 +207,9 @@ export default class MapComponent extends Component<{}, State> {
     }
   };
 
+
   render() {
+    console.log('center', this.state.mapCenterPosition)
     return (
       <MapComponentView
         addDebugMessage={this.addDebugMessage}
