@@ -42,6 +42,7 @@ interface State {
   contextValue?: LeafletContext | null;
   container?: HTMLDivElement | null;
   viewport?: Viewport | null;
+  debugMap?: boolean
 }
 
 export default class MapComponent extends Component<{}, State> {
@@ -58,6 +59,7 @@ export default class MapComponent extends Component<{}, State> {
       mapRef: null,
       ownPositionMarker: null,
       zoom: 6,
+      debugMap: false
     };
   }
 
@@ -186,7 +188,7 @@ export default class MapComponent extends Component<{}, State> {
     payload?: WebviewLeafletMessagePayload
   ) => {
     if (!payload && this.state.mapRef?.leafletElement) {
-      debugger;
+      // debugger;
       const mapCenterPosition: LatLng = {
         lat: this.state.mapRef.leafletElement?.getCenter().lat,
         lng: this.state.mapRef.leafletElement?.getCenter().lng,
