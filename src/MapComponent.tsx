@@ -166,18 +166,18 @@ export default class MapComponent extends Component<{}, State> {
       mapLayers: mockMapLayers,
       // mapMarkers: mockMapMarkers,
       // mapShapes: mockMapShapes,
-      ownPositionMarker: {
-        id: "Own Position",
-        position: { lat: 36.56, lng: -76.17 },
-        icon: "❤️",
-        size: [32, 32],
-        // animation: {
-        //   duration: 1,
-        //   delay: 0,
-        //   iterationCount: INFINITE_ANIMATION_ITERATIONS,
-        //   type: AnimationType.BOUNCE,
-        // },
-      },
+      // ownPositionMarker: {
+      //   id: "Own Position",
+      //   position: { lat: 36.56, lng: -76.17 },
+      //   icon: "❤️",
+      //   size: [32, 32],
+      //   // animation: {
+      //   //   duration: 1,
+      //   //   delay: 0,
+      //   //   iterationCount: INFINITE_ANIMATION_ITERATIONS,
+      //   //   type: AnimationType.BOUNCE,
+      //   // },
+      // },
     });
   };
 
