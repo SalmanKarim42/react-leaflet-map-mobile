@@ -188,7 +188,7 @@ export default class MapComponent extends Component<{}, State> {
     payload?: WebviewLeafletMessagePayload
   ) => {
     if (!payload && this.state.mapRef?.leafletElement) {
-      // debugger;
+      debugger;
       const mapCenterPosition: LatLng = {
         lat: this.state.mapRef.leafletElement?.getCenter().lat,
         lng: this.state.mapRef.leafletElement?.getCenter().lng,
